@@ -1,0 +1,141 @@
+<!--<style>
+  body {
+    margin: 0;
+    font-family: "Ubuntu", sans-serif;
+  }
+  /* Typography */
+  h1 {
+    font-family: "Lora", serif;
+    font-weight: 400;
+    font-size: 2rem;
+    margin: 0;
+    color: #143774;
+  }
+  .subtitle {
+    margin: 0;
+    color: #1792d2;
+    font-weight: 700;
+    font-size: 0.75rem;
+    margin: 0;
+  }
+  /* layout */
+  header {
+    text-align:center;
+    background: #f8f8f8;
+    padding: 2rem 0;
+    margin: 0;
+  }
+  /* Navigation */
+  nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+  }
+  nav li {
+      margin:0 1em;
+  }
+  nav a {
+    text-decoration: none;
+    color: #707070;
+    font-weight: 700;
+    padding:0.25em 0;
+  }
+  nav a:hover,
+  nav a:focus {
+    color:#1792d2;
+  }
+
+</style>-->
+<style>
+  body {
+    margin: 0;
+    font-family: "Ubuntu", sans-serif;
+  }
+  header {
+    text-align: center;
+    background: #f8f8f8;
+    padding: 2rem 0;
+    margin: 0;
+  }
+  .container{
+    width:60%;
+    display: flex;
+    margin:0 auto;
+    justify-content: space-between;
+    align-items: center;
+  }
+  h1 {
+    font-family: "Lora", serif;
+    color: #143774;
+    font-size: 2rem;
+    margin: 0;
+  }
+  .subtitle {
+    color: #1792d2;
+    font-size: 0.75rem;
+    font-weight:700;
+    margin: 0;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+  }
+  nav li {
+    padding: 0 1rem;
+    margin-left:2em;
+  }
+  nav a {
+    color: #707070;
+    text-decoration: none;
+  }
+  @media(max-width:675px)
+  {
+    .container{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    margin:0 auto;
+    justify-content: space-between;
+    align-items: center;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+  }
+  nav li {
+    padding: 0 1rem;
+    margin:1rem 0 0 0;
+  }
+
+  }
+</style>
+
+<html>
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora&family=Ubuntu:wght@300&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="site-title">
+          <h1>Sowmith Kunapaneni</h1>
+          <p class="subtitle">Consistency is the key</p>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="#Home">Home</a></li>
+            <li><a href="#Aboutme">About Me</a></li>
+            <li><a href="#Recent">Recent posts</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+  </body>
+</html>

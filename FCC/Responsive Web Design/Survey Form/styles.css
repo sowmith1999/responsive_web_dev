@@ -1,0 +1,33 @@
+
+main {
+/* The image used */
+background-image: url("https://images.pexels.com/photos/949587/pexels-photo-949587.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260");
+
+/* Full height */
+height: 100%;
+
+/* Center and scale the image nicely */
+opacity: 0.65;
+background-position: center;
+background-repeat: round;
+background-size: contain;
+}
+h1{
+    text-align:center;
+    color: cornsilk;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-style: italic;
+}
+p{
+    text-align: center;
+}
+#QandA{
+    margin: auto;
+    width: 70%;
+    padding: 10px;
+    background-color: burlywood;
+    
+}
+#suggestions{
+    width:100%;
+}

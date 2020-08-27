@@ -1,0 +1,335 @@
+Syntax:
+	Propoerty is an identifier to select which feature to consider
+	Value describes how the feature has to be handled by the browser
+
+Declaration is a property and value pair, css engine claculates which declarations apply to every single lement of a page in order to appropriately lay it out and style it.
+
+declarations are case-insensitive, there are more than 100 different properties and many values for each.
+
+ declarations are grouped in blocks, told by using curly braces.(declaration blocks)
+ semi colon to seperate the declarations in a declaration block.
+ 
+ A declaration block can be applied to differnt elements by using commas to separate them
+  and look like
+  				header,p{
+  				property:value;
+  				}
+ this set is called a rule set.
+ 
+ when more than one set of properties are applied, css will follow precedence to evaluate which one to follow at the end.
+ this evalution of precendence is called cascade algortihm
+ 
+ 
+Statements: It is a building block that starts wih a non-space characther adn ends at the first closing brace or semi-colon.
+
+Rule set is one type of statements.
+Atrules are the ones that strat with @ and end with semicolon or with the block, and are used to convery, meta-data, conditional info, and descriptive information.
+
+Any statement that isn't a rule set or at-rule is ignored, 
+there are nested statements that can apply a specific sub-set of rules at a specific condition.
+
+-----------------------------------------------------------------At-rules:	
+			syntax is @IDENTIFIER (RULE) example:@charset "utf-8"
+			conditional group rules are the one's that can have nested at-rules or rule blocks.
+			
+-----------------------------------------------------------------------------------------------------
+------------------------------Cascade-----
+The cascade is an algorithm that defines how to combine property values originating from different sources, It lies at the core of CSS, as emphasized by the name: cascading Style Sheets.
+
+There are three types of style sheets, the default used by the browser called User-agent Stylesheet
+										the one web developer authors, called Author style sheets
+										the one end-user wants, user can override different parts of the style of website.(using a extension to make a page dark)
+
+A developer resets the user-agent style by forcing common properties values to a known state, brfore beginning to make alternatives to suit the specific needs.
+
+To cascade an elements, all its corressponding rules are gathers and orders them byy importance based on their origin
+	i.e a user-defined styles sheet has precedence over a user-agent style sheet, 
+	if the importance is equal it will use specificity to evaluate the same.
+	
+	"all" can be used to bring back a css to its previous state, normally used to set animations back to thier place/
+	
+	ANimations are done using @keyframe,they define animation between states, keyframes don't cascade. if many are it chooses the appropriate.
+	
+Inheritance in CSS:-------------------------------------------------------------------------------
+	In CSS, inheritance controls, what happens to an element when no value is specified for a property on an element.
+	
+	there are inherited properties and non-inherited properties, 
+		inherited properties get a properties value from its parent unless a value is mentioend for it self, only the root value gets it defualt value.
+			<p>asjghdfasd<em>shdgfjasdhf</em></p>
+				the text in the em gets the same property as p unless mentione	d other wise.
+			One example of inherited properties is color.
+			
+		Non-Inherited properties do not get the root element's value but use a intial value of it's own, example is border.
+	
+	whether a property is inherited or not is mentioned in its documentation.
+	
+	and the default whether it inherits or not can be changed using "inherit" key word.
+	
+	all is another keyword that can change the default setting whether inherits or not(look at the documentation)
+
+Short hand properties:----------------------------------------------------------------------------
+	These properties let you set values to multiple other properties simultaneously making
+	css more concise and make it more readable.
+	
+	for example:background property can be used to set values for background-color, background-image, etc, also "font" for font related properties, and margin for margin related properties.
+----------EDGE Cases while using short hand properties--
+		*)A value which is not specified is set to its initial values, for example
+			background-color: red;
+			background: url(images/bg.gif) no-repeat left top;
+		when the above is used the color is not set to red because, the short hand has precedence, and no color value is set in that short hand, so it sets to it's initial value transparent, that means it overrides the previously set values.
+		*)A child element cannot inherit individual properties, if i use background short hand for a parent, and want to inherit only color, i can't because inherit can only be applied to a propety as a whole, not as a keyword for one value or the other, and we cannot inherit a 
+individual property by setting differently from short-hand, becuase it will then be beacuse of it's absense in the short hand.
+	
+		Short hands don't enforce one specfic order of mentioning the individual props, this is fine when individual prop's values are of different types.
+		Short hand props do use a consistent 1to4 value syntax for border-style, margin and padding.
+			1--all sides
+			2--top+bottom and right+left
+			3--top and right+left and bottom
+			4--top and right and bottom and left
+			
+-----Exmaples:
+	
+			background-color: #000;
+			background-image: url(images/bg.gif);
+			background-repeat: no-repeat;
+			background-position: left top;
+			
+			is equal to background: #000 url(images/bg.gif) no-repeat left top;
+			
+all-------is a universal short hand property, which applies its values to every property in the document, this property's values i.e. four special universal property values for controlling inheritance are
+			1)inherit--turns on inheritance, i.e. same as that of parent.
+			2)initial--sets the prop value to its initial of that property.
+			3)unset--resets the property to its natural value, if the property is naturally inherited it acts like inherit or otherwise it acts like initial.
+-------------------------------------------------------------------------------------------------
+Specificity: 	Specificity is the means by which browsers decide which css propertyvalues are most relevant to an element and therfore will be applied, specificity is based on matching rules which are composed of different sorts of CSS selectors.
+
+		when two same properties with different values are applied to an element, specificit comes into play, cascade uses the selector's with higher specificity over the ones with lower
+to use as the value, every rule block has some effect if it defines a property which isn't by rules blocks of highher specificity, that means specificty is applied over the level of individual property not on the level of condiering or ignoring a rule block.
+	
+	A common practice is to define generic style for the document to normalise the document before applying specific rules.
+	important statement and inline styles>id selector > class selector, attribute selector>element selector
+		*,+,>,~,' ',|| have no effect on specificity, the classes inside :not() do.
+		
+	USing !important is a bad practice period.because it makes debugginh hard beacuse it breaks the nautral cascading of the style sheet.
+		use it only wehn absolutely necessary, Always look for specificity before even considering important, never use !important on site wide css.
+
+Be more specific instead of using important, or declare that rule block below, giving it more specificity, you can use the same selector twice to increase the specificity, tho dumb it works.
+
+----------For based specificity-- like a selector *[id="f00"] tho this selector uses a id, this will have the specificity of a attirbute selector.
+
+----------Tree proximity Ignorance---the proximity of an element has no effect on specificity,
+<html>
+  <body>
+    <h1>Here is a title!</h1>
+  </body>
+</html>
+
+body h1 {
+  color: green;
+}
+
+html h1 {
+  color: purple;
+}
+
+the text will be in purple, because html, body have same specificity but html is later in the document, so it is considered.
+
+----------------Directed vs inherited
+ Directed elements will alwas take precedence regardless of how specific inhertied property is.
+ ----------------------------------------------------------------------------------------------------------------------------------
+ Selectors:
+Basic Selectors:1)UNiversal selectors
+ 		2)Type selectors
+ 		3)class selectors
+ 		4)id selectors
+ 		5)Attribute selectors
+ 		
+selector list: the ',' is a grouping method, it selects the matching nodes
+				example:div,span will match both span and div
+
+Combinators:1)space combinator, selects nodes that are descedants of the first element
+			exmaple: div span{} will match all the span elements that are inside a div element
+		2)Child combinator, the '>' selects the node that are direct children of the first element.
+		3)General sibling combinator: the '+' combinator selects an adjacent sibling, that means the second element directly follows the first and both share the same parent.
+		4)General siblig combinator:The '~' selects siblings, this means that the second element foloows the first(npot neccesarily immediately), and both share the same parent.
+		5)Column combinator:the '||' selects the those elements that are matched by the second selector and are also a part of the first selector.or it matches the second selector elements that are in the scope of the first element selector.
+---------------------------------------------------------------------------		
+---------Pseudo:1)pseudo classes:these allow the selection of elements based on state information that is not contained in the document tree.
+			example:a:visited will match all <a> that have been visited by the user.
+		2)Pseudo elements:
+				the :: will represent entities that are not included in HTML
+				example say first line of all the p elements, i.e. p::first-line
+				There are a number of pseudo elements: 1)::after
+									2)::before
+									3)::first-line
+									4)::first-letter
+									5)::cue
+										etc
+						these pseudo elements can be used in conjunction to pseudo classes to alter the formatiing of the content based on state.
+
+css:
+span[data-descr] {
+  position: relative;
+  text-decoration: underline;
+  color: #00F;
+  cursor: help;
+}
+
+span[data-descr]:hover::after,
+span[data-descr]:focus::after {
+  content: attr(data-descr);
+  position: absolute;
+  left: 0;
+  top: 24px;
+  min-width: 200px;
+  border: 1px #aaaaaa solid;
+  border-radius: 10px;
+  background-color: #ffffcc;
+  padding: 12px;
+  color: #000000;
+  font-size: 14px;
+  z-index: 1;
+}
+for this html
+html:
+	<p>Here we have some
+  <span tabindex="0" data-descr="collection of words and punctuation">text</span> with a few
+  <span tabindex="0" data-descr="small popups that appear when hovering">tooltips</span>.
+	</p>
+here when span elements are hovered on or focused, they show a pop-up kind of text, this is done by using pseudo classed in conjuntion with pseudo elements.
+----------------------------------------------------------------------------------------------
+Value Definition syntax: This is a formal grammar used for defining the set of valid values for a css property or function. this is used to define the syntax of the css properties i.e. a property needs there values to be valid and those have to be of a certain order, instead of writing this down in form of text, we use symbols to do the same.
+		Sign 	Name 	Description 	Example
+Combinators:
+	Juxtaposition 	Components are mandatory and should appear in that order 	solid <length>
+&& 	Double ampersand 	Components are mandatory but may appear in any order 	<length> && <string>
+|| 	Double bar 	At least one of the components must be present, and they may appear in any order. 	<'border-image-outset'> || <'border-image-slice'>
+| 	Single bar 	Exactly one of the components must be present 	smaller | small | normal | big | bigger
+[ ] 	Brackets 	Group components to bypass precedence rules 	bold [ thin && <length> ]
+Multipliers:
+	No multiplier 	Exactly 1 times 	solid
+* 	Asterisk 	0 or more times 	bold smaller*
++ 	Plus sign 	1 or more times 	bold smaller+
+? 	Question mark 	0 or 1 time (that is optional) 	bold smaller?
+{A,B} 	Curly braces 	At least A times, at most B times 	bold smaller{1,3}
+# 	Hash mark 	1 or more times, but each occurrence separated by a comma (',') 	bold smaller#
+! 	Exclamation point 	Group must produce at least 1 value 	[ bold? smaller? ]!
+-------------------------------------------------------------------------------------------
+textual data types: are either <string> the ones in quotes or , <ident> the , a css identifier which is an unquotes string, css identifiers listed in specifications as <ident>, <custom-ident> must be unquoted.
+I in the css specifications, values that can be defined by the web developer like keyframes, fon=family names or grid areas are listed as a <custom-ident>, <string> ro both.
+
+when both are listed, it means quotes are optional.		
+
+---NUmeric data types:1)integer:any integer number positive or nagative
+			2)Numbers:any number
+			3)dimension:any number with a unit attached to it. ex:450deg;
+				like:1)<length> can be relative(example:em, ex, vw, vh) or absolute units like(cm,px,inch)
+				     2)<angle>(deg,grad,ran,turn)
+				     3)<time>(s,ms)
+				     4)<frequency>(Hz,kHz)
+				     5)<resolution>(dpi,dpcm,dppx,x)
+------percentage:is a type that represents a fraction of some other value, they always refer to someother quantity, this quanity is a meassure of a property of parent element, or of a containing block, or something else. when a value is put to be percentage, specification tells you about which quantity this percentahe can refer to.
+------there can be a mix of percentage and length, resulting in <angle-percentage> etc
+------color value specifies the color of an element feature.
+------iamge value specifies all the different types of image that can be used in css
+------Position: defines the 2D postioning of an object inside an postioning area.
+				      		
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++================+++++++++++++++++++++*****************++++++++++++++++++++++++++*****+**+***+*+*+*++*+*+*+**+*+*+*+*+*+**+...
+
+
+Block formatting context:					
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
