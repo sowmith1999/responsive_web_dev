@@ -2,3 +2,75 @@
         font styles used are 
             font-family: 'Source Code Pro', monospace;
             font-family: 'Source Sans Pro', sans-serif; */
+body{
+    font-family:'Source Sans Pro', sans-serif;
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+    font-size:1rem;
+}
+a{
+    color:#614690;
+}
+a:hover{
+    background-color: #614690;
+    color:#fff;
+}
+/* Setting the nav bar */
+.Navigation{
+    background-color:#5a3e8c;
+    padding:4px;
+
+}
+nav ul{
+    max-width:30%;
+    margin:0 auto;
+    list-style: none;
+    display:flex;
+    justify-content: space-around;
+    padding:0;
+    
+}
+nav li{
+    font-family: 'Source Code Pro', monospace;
+    font-size:1.25rem;
+    text-align: center;
+    
+}
+nav a{
+    color:#d5bdea;
+    text-decoration: none;
+}
+/* STyling the main of the webpage */
+main{
+    min-width:616px;
+    width:35%;
+    margin:0 auto;
+    text-align:left;
+    font-size:1rem;
+    line-height:1.8rem;
+    border-bottom-width: 1px;
+    border-bottom-color: grey;
+    border-bottom-style:solid;
+}
+h1{
+    padding:5px 0;
+    margin:25px 0;
+    font-size:2rem;
+    line-height: 3rem;
+    font-weight:bold;
+}
+main li{
+    list-style-type:lower-greek;
+}
+strong{
+    font-family:'Source Sans Pro', sans-serif;
+    font-weight:bold;
+}
+/* STyling the footer */
+footer{
+    text-align:center;
+    padding-top: 2rem;
+    font-size:0.75rem;
+    padding-bottom:1rem;
+}
